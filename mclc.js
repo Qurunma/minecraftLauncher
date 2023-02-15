@@ -1,24 +1,21 @@
-import MCLC from "minecraft-launcher-core";
 const runMine = () => {
+  const MCLC = require("minecraft-launcher-core");
   const { Client, Authenticator } = MCLC;
   const launcher = new Client();
 
   let opts = {
     clientPackage: null,
-    // For production launchers, I recommend not passing
-    // the getAuth function through the authorization field and instead
-    // handling authentication outside before you initialize
-    // MCLC so you can handle auth based errors and validation!
     authorization: Authenticator.getAuth("XFD"),
     root: "./minecraft",
     version: {
-      number: "1.12.2",
+      number: "1.14.4",
       type: "release",
     },
-    // memory: {
-    //   max: "4G",
-    //   min: "2G",
-    // },
+    memory: {
+      max: "6G",
+      min: "4G",
+    },
+    forge: "C:/Users/Blockchain/Downloads/forge-1.14.4-28.2.26-installer.jar",
   };
 
   launcher.launch(opts);
@@ -26,5 +23,5 @@ const runMine = () => {
   launcher.on("debug", (e) => console.log(e));
   launcher.on("data", (e) => console.log(e));
 };
-runMine();
-export default runMine;
+// runMine();
+module.exports.launcher = runMine;
