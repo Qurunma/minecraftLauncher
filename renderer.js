@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".play").addEventListener("click", async () => {
-    console.log(window);
-    await window.versions.launch();
+    await window.versions.launch(
+      document.querySelector(".select-version").selectedOptions[0].textContent
+    );
   });
 });

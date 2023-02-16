@@ -1,8 +1,8 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("versions", {
-  launch: () => {
-    ipcRenderer.invoke("launch");
+  launch: (version) => {
+    ipcRenderer.invoke("launch", JSON.parse(JSON.stringify(version)));
   },
 });
 
@@ -14,7 +14,6 @@ window.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       const select = document.querySelector(".select-version");
       data.editions.java.versions.forEach((element) => {
-        console.log(1);
         const option = document.createElement("option");
         option.value = element.name;
         option.textContent = element.name;

@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const launcher = require("./mclc");
 
+app.disableHardwareAcceleration();
+
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -11,8 +13,8 @@ const createWindow = () => {
     },
   });
   mainWindow.openDevTools();
-  ipcMain.handle("launch", () => {
-    launcher.launcher();
+  ipcMain.handle("launch", (event, version) => {
+    launcher.launcher(version);
   });
   mainWindow.loadFile("index.html");
 };

@@ -1,17 +1,17 @@
-const runMine = () => {
+const runMine = (version) => {
   const MCLC = require("minecraft-launcher-core");
   const { Client, Authenticator } = MCLC;
   const launcher = new Client();
 
   let opts = {
-    window:{
-      fullscreen:true
+    window: {
+      fullscreen: true,
     },
     clientPackage: null,
     authorization: Authenticator.getAuth("XFD"),
     root: "./minecraft",
     version: {
-      number: "1.7.10",
+      number: version,
       type: "release",
     },
     memory: {
