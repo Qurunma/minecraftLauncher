@@ -3,13 +3,15 @@ const runMine = (version) => {
   const { Client, Authenticator } = MCLC;
   const launcher = new Client();
 
+  const os = require("os");
+
   let opts = {
     window: {
       fullscreen: true,
     },
     clientPackage: null,
     authorization: Authenticator.getAuth("XFD"),
-    root: "./minecraft",
+    root: os.homedir() + "/AppData/Roaming/minecraft",
     version: {
       number: version,
       type: "release",
