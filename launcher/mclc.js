@@ -35,7 +35,9 @@ const runMine = (version) => {
           "will-download",
           (event, item, webContents) => {
             // Set the save path, making Electron not to prompt a save dialog.
-            item.setSavePath(app.getPath("downloads") + item.getFilename());
+            item.setSavePath(
+              app.getPath("downloads") + "/" + item.getFilename()
+            );
 
             item.on("updated", (event, state) => {
               if (state === "interrupted") {
