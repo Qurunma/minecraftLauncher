@@ -1,5 +1,7 @@
 const runMine = (version) => {
   const MCLC = require("minecraft-launcher-core");
+  const { app, BrowserWindow, ipcMain } = require("electron");
+
   const { Client, Authenticator } = MCLC;
   const launcher = new Client();
 
@@ -23,14 +25,48 @@ const runMine = (version) => {
     );
     if (modsFromServer != modsOnClient) {
       modsFromServer.filter((a) => modsOnClient.indexOf(a) == -1);
-      modsFromServer.forEach((element) => {
-        fetch(`http://localhost:3000/${element}`)
-          .then((res) => {
-            console.log(res.blob());
-          })
-          .catch((err) => {
-            console.error(err);
-          });
+      modsFromServer.forEach(async (element) => {
+        const window = new BrowserWindow({
+          width: 940,
+          height: 588,
+        });
+        window.loadURL("http://localhost:3000/download/" + element);
+        window.webContents.session.on(
+          "will-download",
+          (event, item, webContents) => {
+            // Set the save path, making Electron not to prompt a save dialog.
+            item.setSavePath(app.getPath("downloads") + item.getFilename());
+
+            item.on("updated", (event, state) => {
+              if (state === "interrupted") {
+                console.log("Download is interrupted but can be resumed");
+              } else if (state === "progressing") {
+                if (item.isPaused()) {
+                  console.log("Download is paused");
+                } else {
+                  console.log(
+                    `Received bytes: ${item.getReceivedBytes()}, ${item.getTotalBytes()}`
+                  );
+                }
+              }
+            });
+            item.once("done", (event, state) => {
+              if (state === "completed") {
+                console.log("Download successfully");
+                console.log(minePath + "/mods/" + item.getFilename());
+                fs.rename(
+                  os.homedir() + "/downloads/" + item.getFilename(),
+                  minePath + "/mods/" + item.getFilename(),
+                  (err) => {
+                    console.log(err);
+                  }
+                );
+              } else {
+                console.log(`Download failed: ${state}`);
+              }
+            });
+          }
+        );
       });
     }
   });

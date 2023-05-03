@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const launcher = require("./mclc");
+const os = require("os");
 
 app.disableHardwareAcceleration();
 

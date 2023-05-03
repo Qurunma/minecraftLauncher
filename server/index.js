@@ -5,8 +5,6 @@ import os from "node:os";
 const app = express();
 const minePath = os.homedir() + "/Documents/mods";
 
-app.use(express.static(minePath));
-
 app.get("/", (req, res) => {
   fs.readdir(minePath, (err, files) => {
     console.log(err);
@@ -14,4 +12,11 @@ app.get("/", (req, res) => {
   });
 });
 
-app.listen(3000);
+app.get("/download/:name", (req, res) => {
+  const filename = req.params.name;
+  res.download(minePath + "/" + filename);
+});
+
+app.listen(3000, () => {
+  console.log("server started on port 3000");
+});
