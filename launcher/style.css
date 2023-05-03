@@ -1,0 +1,120 @@
+body {
+  overflow: hidden;
+  text-decoration: none;
+  user-select: none;
+}
+
+.head {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 950px;
+  height: 463px;
+  background-image: url(./img/backgroundimg.png);
+}
+
+.logo_name {
+  display: flex;
+}
+
+.Logo_name_one,
+.Logo_name_two {
+  display: flex;
+  margin-top: 15px;
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 24;
+  text-transform: uppercase;
+}
+
+.Logo_name_one {
+  color: #d409d8;
+  margin-left: 13px;
+}
+
+.Logo_name_two {
+  color: white;
+}
+
+.menu {
+  position: fixed;
+  width: 950px;
+  height: 67px;
+  bottom: 0;
+  left: 0;
+  background-image: url(./img/foterimg.png);
+  top: 463px;
+}
+
+.section {
+  display: flex;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.name,
+.select_version,
+.play,
+.settings,
+.text_play {
+  display: flex;
+}
+
+.name,
+.select_version,
+.play,
+.text_play {
+  font-family: "Rubik Mono One", sans-serif;
+  text-transform: uppercase;
+}
+
+.name,
+.select_version,
+.play {
+  background: #ffffff;
+  border-radius: 5px;
+  border: transparent;
+  border-style: none;
+  outline-offset: 0;
+  outline: none;
+  text-decoration: none;
+}
+
+.name {
+  font-size: 15;
+  width: 240px;
+  height: 25px;
+  margin-right: 40px;
+  margin-top: 7px;
+}
+
+.select_version {
+  font-size: 15;
+  width: 240px;
+  height: 25px;
+  margin-right: 46px;
+  margin-top: 9px;
+}
+
+.play {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 242px;
+  height: 47px;
+  margin-right: 37px;
+}
+
+.text_play {
+  line-height: 40px;
+  color: #d409d8;
+  font-size: xx-large;
+  letter-spacing: 0.2em;
+}
+
+.settings {
+  margin-top: 2px;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}

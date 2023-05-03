@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <title>ElLauncher</title>
+    <script src="./renderer.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="head">
+      <div class="logo_name">
+        <h2 class="Logo_name_one">EL</h2>
+        <h2 class="Logo_name_two">LAUNCHER</h2>
+      </div>
+    </div>
+    <footer class="menu">
+      <div class="section">
+        <input class="name" type="text" placeholder="name" />
+        <select class="select_version"></select>
+        <button class="play"><span class="text_play">PLAY</span></button>
+        <img class="settings" src="./img/settings.svg" alt="" />
+      </div>
+    </footer>
+  </body>
+</html>
