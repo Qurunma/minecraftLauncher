@@ -7,12 +7,14 @@ app.disableHardwareAcceleration();
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 940,
-    height: 588,
+    width: 929,
+    height: 558,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    resizable: false,
   });
+  mainWindow.setMenuBarVisibility(false);
   mainWindow.openDevTools();
   ipcMain.handle("launch", (event, version) => {
     launcher.launcher(version);
