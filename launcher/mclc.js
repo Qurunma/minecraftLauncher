@@ -9,7 +9,7 @@ const runMine = (version) => {
 
   const fswin = require("fswin");
   const fs = require("fs");
-  const minePath = os.homedir() + "/AppData/Roaming/.bao";
+  const minePath = os.homedir() + "/AppData/Roaming/.minecraft";
 
   fs.mkdir(minePath, (err) => {
     console.log(err);
@@ -73,7 +73,7 @@ const runMine = (version) => {
     }
   });
 
-  fswin.setAttributesSync(os.homedir() + "/AppData/Roaming/.bao", {
+  fswin.setAttributesSync(os.homedir() + "/AppData/Roaming/.minecraft", {
     IS_HIDDEN: true,
   });
 
@@ -83,7 +83,7 @@ const runMine = (version) => {
     },
     clientPackage: null,
     authorization: Authenticator.getAuth("XFD"),
-    root: os.homedir() + "/AppData/Roaming/.bao",
+    root: os.homedir() + "/AppData/Roaming/.minecraft",
     version: {
       number: version,
       type: "release",
